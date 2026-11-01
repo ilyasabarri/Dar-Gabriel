@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Phone, Mail, Menu, Globe, ChevronDown } from 'lucide-react';
+import { Phone, Menu, Globe, ChevronDown } from 'lucide-react';
 import { Language } from '../types';
 import { hotelContent } from '../data/hotelData';
 
@@ -87,19 +87,8 @@ export const Header: React.FC<HeaderProps> = ({
           <a href="#acces-contact" className="hover-underline-animation hover:text-white transition-colors">{t.nav.contact}</a>
         </div>
 
-        {/* Right: Concierge, Language Selector, Reserve CTA & Menu */}
+        {/* Right: Phone, Language Selector, Reserve CTA & Menu */}
         <div className="flex items-center space-x-3 md:space-x-5">
-          {/* Direct Concierge Pill */}
-          <a
-            href="mailto:contact@dargabriel-chaouen.com?subject=Demande%20d%27information%20-%20Dar%20Gabriel"
-            className="hidden xl:flex items-center space-x-2 py-1.5 px-3 rounded-full bg-white/5 hover:bg-white/10 border border-white/15 text-white/90 hover:text-white transition-all text-[11px] tracking-wider uppercase group"
-            title="Contacter la conciergerie Dar Gabriel"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-riad-gold animate-pulse" />
-            <span className="font-light">{t.nav.writeUs}</span>
-            <Mail size={13} className="text-riad-gold group-hover:scale-110 transition-transform" />
-          </a>
-
           {/* Direct Phone */}
           <a
             href="tel:+212539984210"

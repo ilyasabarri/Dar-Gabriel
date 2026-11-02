@@ -38,7 +38,7 @@ export const MenuFlyout: React.FC<MenuFlyoutProps> = ({
           onClick={onClose}
           className="flex items-center space-x-2 text-white/70 hover:text-white transition-colors group p-2"
         >
-          <span className="text-xs uppercase tracking-widest font-light hidden sm:inline">Fermer</span>
+          <span className="text-xs uppercase tracking-widest font-light hidden sm:inline">{t.menuFlyout.close}</span>
           <X size={26} className="text-white group-hover:rotate-90 transition-transform duration-300" />
         </button>
       </div>
@@ -48,11 +48,11 @@ export const MenuFlyout: React.FC<MenuFlyoutProps> = ({
         {/* Left Column: Navigation Links */}
         <div className="lg:col-span-7 space-y-5">
           {[
-            { href: "#chambres", label: t.nav.rooms, subtitle: "Les 7 chambres d'hôtes privatives avec SDB" },
-            { href: "#le-riad", label: t.nav.hotel, subtitle: "Maison d'hôtes traditionnelle restaurée" },
-            { href: "#experiences", label: t.nav.rooftop, subtitle: "Toit-terrasse panoramique sur le Rif & table d'hôtes" },
-            { href: "#galerie", label: t.nav.gallery, subtitle: "Ambiance bleue et cour intérieure" },
-            { href: "#acces-contact", label: t.nav.contact, subtitle: "Accès facile Bab Souk • Kasbah ~100 m" },
+            { href: "#chambres", label: t.nav.rooms, subtitle: t.menuFlyout.subtitles.rooms },
+            { href: "#le-riad", label: t.nav.hotel, subtitle: t.menuFlyout.subtitles.hotel },
+            { href: "#experiences", label: t.nav.rooftop, subtitle: t.menuFlyout.subtitles.rooftop },
+            { href: "#galerie", label: t.nav.gallery, subtitle: t.menuFlyout.subtitles.gallery },
+            { href: "#acces-contact", label: t.nav.contact, subtitle: t.menuFlyout.subtitles.contact },
           ].map((item, index) => (
             <div key={index} className="group">
               <a 
@@ -82,20 +82,20 @@ export const MenuFlyout: React.FC<MenuFlyoutProps> = ({
         <div className="lg:col-span-5 bg-white/5 border border-white/10 p-8 rounded-lg space-y-6">
           <div>
             <div className="inline-block bg-riad-gold/20 text-riad-gold text-[10px] uppercase tracking-widest font-bold px-2.5 py-1 rounded mb-2">
-              Note 8.8 / 10 • Superbe (Booking.com)
+              {t.menuFlyout.ratingBadge}
             </div>
             <h4 className="text-xs uppercase tracking-[0.25em] text-riad-gold font-medium mb-1">
               Dar Gabriel
             </h4>
             <p className="text-sm text-white/70 font-serif leading-relaxed">
-              "Une maison d'hôtes intimiste et chaleureuse à deux pas de la porte Bab Souk. Arrivée simple en taxi, rooftop avec vue sur le Rif et petit-déjeuner copieux inclus."
+              {t.menuFlyout.quote}
             </p>
           </div>
 
           <div className="space-y-3 pt-3 border-t border-white/10 text-xs text-white/80">
             <div className="flex items-start space-x-3">
               <MapPin size={16} className="text-riad-gold shrink-0 mt-0.5" />
-              <span>Quartier Bab Souk, Médina de Chefchaouen, 91000, Maroc</span>
+              <span>{t.locationSection.address}</span>
             </div>
             <div className="flex items-center space-x-3">
               <Phone size={16} className="text-riad-gold shrink-0" />
@@ -108,7 +108,7 @@ export const MenuFlyout: React.FC<MenuFlyoutProps> = ({
           </div>
 
           <div className="pt-4 border-t border-white/10 flex items-center justify-between">
-            <span className="text-xs text-white/50 uppercase tracking-widest">Langue :</span>
+            <span className="text-xs text-white/50 uppercase tracking-widest">{t.menuFlyout.changeLang} :</span>
             <div className="flex space-x-2 text-xs">
               {(['fr', 'es', 'en'] as Language[]).map(l => (
                 <button
@@ -128,7 +128,7 @@ export const MenuFlyout: React.FC<MenuFlyoutProps> = ({
 
       {/* Footer inside Menu */}
       <div className="px-6 md:px-12 py-5 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center text-xs text-white/50 gap-4">
-        <span>© {new Date().getFullYear()} Dar Gabriel Chefchaouen. Tous droits réservés.</span>
+        <span>© {new Date().getFullYear()} Dar Gabriel Chefchaouen. {t.footer.copyright}</span>
         <div className="flex items-center space-x-5 text-white/70">
           <a href="#" className="hover:text-riad-gold"><Instagram size={17} /></a>
           <a href="#" className="hover:text-riad-gold"><Facebook size={17} /></a>

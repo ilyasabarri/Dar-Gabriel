@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Check, Maximize2, Users, BedDouble, Eye } from 'lucide-react';
 import { Language, Room } from '../types';
-import { hotelContent, roomsData } from '../data/hotelData';
+import { hotelContent, getRoomsData } from '../data/hotelData';
 
 interface RoomsCarouselProps {
   lang: Language;
@@ -15,14 +15,15 @@ export const RoomsCarousel: React.FC<RoomsCarouselProps> = ({
   const t = hotelContent[lang];
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const currentRoom = roomsData[activeIndex];
+  const rooms = getRoomsData(lang);
+  const currentRoom = rooms[activeIndex] || rooms[0];
 
   const handleNext = () => {
-    setActiveIndex((prev) => (prev + 1) % roomsData.length);
+    setActiveIndex((prev) => (prev + 1) % rooms.length);
   };
 
   const handlePrev = () => {
-    setActiveIndex((prev) => (prev - 1 + roomsData.length) % roomsData.length);
+    setActiveIndex((prev) => (prev - 1 + rooms.length) % rooms.length);
   };
 
   // Display MAD price from data or fallback calculation
@@ -47,7 +48,7 @@ export const RoomsCarousel: React.FC<RoomsCarouselProps> = ({
         {/* Tab Navigation Pill Bar (Safe Scroll with Never-Clipped Start) */}
         <div className="w-full overflow-x-auto no-scrollbar mb-10 pb-3 border-b border-neutral-200/80">
           <div className="flex items-center gap-2 sm:gap-2.5 px-2 w-max min-w-full justify-start xl:justify-center">
-            {roomsData.map((room, idx) => (
+            {rooms.map((room, idx) => (
               <button
                 key={room.id}
                 onClick={() => setActiveIndex(idx)}
@@ -106,14 +107,14 @@ export const RoomsCarousel: React.FC<RoomsCarouselProps> = ({
               <button
                 onClick={handlePrev}
                 className="w-10 h-10 rounded-full bg-white/90 hover:bg-white text-black flex items-center justify-center shadow-lg transition-all pointer-events-auto hover:scale-110 active:scale-95"
-                aria-label="Chambre précédente"
+                aria-label={t.roomsLabels.prevRoom}
               >
                 <ChevronLeft size={20} />
               </button>
               <button
                 onClick={handleNext}
                 className="w-10 h-10 rounded-full bg-white/90 hover:bg-white text-black flex items-center justify-center shadow-lg transition-all pointer-events-auto hover:scale-110 active:scale-95"
-                aria-label="Chambre suivante"
+                aria-label={t.roomsLabels.nextRoom}
               >
                 <ChevronRight size={20} />
               </button>
@@ -137,19 +138,19 @@ export const RoomsCarousel: React.FC<RoomsCarouselProps> = ({
               <div className="grid grid-cols-2 gap-3 py-4 border-y border-neutral-100 mb-6 text-xs text-neutral-700">
                 <div className="flex items-center space-x-2">
                   <Maximize2 size={15} className="text-riad-bronze shrink-0" />
-                  <span>Superficie : <strong>{currentRoom.size}</strong></span>
+                  <span>{t.roomsLabels.sizeLabel} <strong>{currentRoom.size}</strong></span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Users size={15} className="text-riad-bronze shrink-0" />
-                  <span>Capacité : <strong>{currentRoom.capacity}</strong></span>
+                  <span>{t.roomsLabels.capacityLabel} <strong>{currentRoom.capacity}</strong></span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <BedDouble size={15} className="text-riad-bronze shrink-0" />
-                  <span>Literie : <strong>{currentRoom.bed}</strong></span>
+                  <span>{t.roomsLabels.bedLabel} <strong>{currentRoom.bed}</strong></span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Eye size={15} className="text-riad-bronze shrink-0" />
-                  <span className="truncate">Vue : <strong>{currentRoom.view}</strong></span>
+                  <span className="truncate">{t.roomsLabels.viewLabel} <strong>{currentRoom.view}</strong></span>
                 </div>
               </div>
 

@@ -75,7 +75,7 @@ export const BookingBar: React.FC<BookingBarProps> = ({
           >
             <div className="flex items-center space-x-2">
               <Users size={15} className="text-riad-bronze shrink-0" />
-              <span>{guests} {guests === 1 ? 'Personne' : 'Personnes'}</span>
+              <span>{guests} {guests === 1 ? t.bookingBar.personSingle : t.bookingBar.personPlural}</span>
             </div>
             <ChevronDown size={14} className="text-neutral-400" />
           </div>
@@ -83,7 +83,7 @@ export const BookingBar: React.FC<BookingBarProps> = ({
           {showGuestsDropdown && (
             <div className="absolute left-0 right-0 top-full mt-1 bg-white border border-neutral-200 rounded shadow-xl p-3 z-50 animate-fade-in">
               <div className="flex justify-between items-center py-1">
-                <span className="text-xs text-neutral-700 font-medium">Voyageurs (1 à 4):</span>
+                <span className="text-xs text-neutral-700 font-medium">{t.bookingBar.guestsDropdownTitle}</span>
                 <div className="flex items-center space-x-2">
                   <button 
                     type="button"

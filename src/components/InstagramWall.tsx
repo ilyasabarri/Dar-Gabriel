@@ -1,6 +1,6 @@
 import React from 'react';
 import { Language } from '../types';
-import { hotelContent, galleryImages } from '../data/hotelData';
+import { hotelContent, getGalleryImages } from '../data/hotelData';
 
 interface InstagramWallProps {
   lang: Language;
@@ -8,6 +8,7 @@ interface InstagramWallProps {
 
 export const InstagramWall: React.FC<InstagramWallProps> = ({ lang }) => {
   const t = hotelContent[lang];
+  const gallery = getGalleryImages(lang);
 
   return (
     <section id="galerie" className="py-24 md:py-32 bg-[#222e2b] text-white overflow-hidden">
@@ -20,7 +21,7 @@ export const InstagramWall: React.FC<InstagramWallProps> = ({ lang }) => {
       {/* Gallery Strip with Natural Moroccan / Chefchaouen Atmosphere */}
       <div className="max-w-[1600px] mx-auto px-4">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-          {galleryImages.map((img, idx) => (
+          {gallery.map((img, idx) => (
             <div
               key={idx}
               className="group relative h-64 sm:h-72 rounded overflow-hidden shadow-lg bg-black/40 cursor-pointer"

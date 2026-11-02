@@ -76,14 +76,14 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
         target="_blank" 
         rel="noopener noreferrer"
         className="fixed right-0 top-1/2 -translate-y-1/2 z-30 hidden sm:flex flex-col items-center bg-white text-black shadow-2xl py-3 px-2 rounded-l-md border-y border-l border-black/10 select-none hover:bg-neutral-50 transition-colors group cursor-pointer"
-        title="Voir nos avis sur Booking.com"
+        title={t.hero.ratingTitle}
       >
         <span className="font-serif font-bold text-sm tracking-tighter text-[#003580] group-hover:scale-110 transition-transform">
           8.8
         </span>
         <div className="h-5 w-[1px] bg-black/15 my-1" />
         <span className="text-[9px] tracking-widest uppercase font-semibold [writing-mode:vertical-rl] text-neutral-800 py-1">
-          Superbe
+          {t.hero.ratingText}
         </span>
       </a>
 
@@ -120,13 +120,13 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
         <div className="relative inline-flex items-center justify-center mt-2">
           <div className="px-5 py-1.5 rounded-full border border-white/40 flex items-center justify-center backdrop-blur-[3px] bg-black/20">
             <span className="text-[10px] md:text-[11px] tracking-[0.3em] uppercase text-white/95 font-light">
-              MAISON D'HÔTES TRADITIONNELLE • 7 CHAMBRES
+              {t.hero.category}
             </span>
           </div>
         </div>
 
         <p className="mt-6 text-sm md:text-base font-serif italic text-white/90 max-w-xl mx-auto drop-shadow">
-          Un riad intimiste au cœur de la Médina Bleue, avec toit-terrasse panoramique et accueil chaleureux
+          {t.hero.tagline}
         </p>
       </div>
 
@@ -135,7 +135,7 @@ export const Hero: React.FC<HeroProps> = ({ lang }) => {
         href="#le-riad"
         className="relative z-10 pb-24 md:pb-28 text-center text-white/60 hover:text-white transition-colors cursor-pointer flex flex-col items-center group"
       >
-        <span className="text-[9px] uppercase tracking-[0.25em] mb-1 group-hover:text-riad-gold transition-colors">Découvrir</span>
+        <span className="text-[9px] uppercase tracking-[0.25em] mb-1 group-hover:text-riad-gold transition-colors">{t.hero.discover}</span>
         <ChevronDown size={18} className="animate-bounce" />
       </a>
     </section>

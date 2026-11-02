@@ -30,29 +30,29 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenBooking }) => {
           </div>
 
           <p className="text-xs text-white/60 font-serif leading-relaxed max-w-sm pt-2">
-            Maison d'hôtes traditionnelle de 7 chambres privatives au cœur de la Médina de Chefchaouen. Notée 8.8/10 sur Booking.com avec une note d'emplacement exceptionnelle de 9.5/10 grâce à l'accès direct par Bab Souk.
+            {t.footer.about}
           </p>
         </div>
 
         {/* Center: Columns of Navigation Links */}
         <div className="md:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-6 text-xs uppercase tracking-[0.16em] font-medium text-white/80">
           <div className="space-y-3">
-            <a href="#chambres" className="block hover:text-riad-gold transition-colors">Chambres</a>
-            <a href="#le-riad" className="block hover:text-riad-gold transition-colors">Le Riad</a>
-            <a href="#experiences" className="block hover:text-riad-gold transition-colors">Toit-Terrasse</a>
+            <a href="#chambres" className="block hover:text-riad-gold transition-colors">{t.footer.links.rooms}</a>
+            <a href="#le-riad" className="block hover:text-riad-gold transition-colors">{t.footer.links.hotel}</a>
+            <a href="#experiences" className="block hover:text-riad-gold transition-colors">{t.footer.links.rooftop}</a>
           </div>
 
           <div className="space-y-3">
-            <a href="#experiences" className="block hover:text-riad-gold transition-colors">Table d'Hôtes</a>
-            <a href="#galerie" className="block hover:text-riad-gold transition-colors">Galerie Photos</a>
+            <a href="#experiences" className="block hover:text-riad-gold transition-colors">{t.footer.links.dinner}</a>
+            <a href="#galerie" className="block hover:text-riad-gold transition-colors">{t.footer.links.gallery}</a>
             <button onClick={onOpenBooking} className="block text-left text-riad-gold hover:underline">
-              Réserver en Direct
+              {t.footer.links.reserveDirect}
             </button>
           </div>
 
           <div className="space-y-3">
-            <a href="#acces-contact" className="block hover:text-riad-gold transition-colors">Accès Bab Souk</a>
-            <a href="#acces-contact" className="block hover:text-riad-gold transition-colors">Plan & Contact</a>
+            <a href="#acces-contact" className="block hover:text-riad-gold transition-colors">{t.footer.links.babSouk}</a>
+            <a href="#acces-contact" className="block hover:text-riad-gold transition-colors">{t.footer.links.contact}</a>
             <a href="tel:+212539984210" className="block text-riad-gold hover:underline">
               +212 539 98 42 10
             </a>
@@ -64,16 +64,16 @@ export const Footer: React.FC<FooterProps> = ({ lang, onOpenBooking }) => {
           <p className="font-medium text-white/80">
             Copyright © {new Date().getFullYear()} Dar Gabriel Chefchaouen.
           </p>
-          <p>Tous droits réservés.</p>
+          <p>{t.footer.copyright}</p>
           <p className="text-[10px] text-white/40">
-            Maison d'hôtes classée • Médina de Chefchaouen, Maroc
+            {t.footer.classified}
           </p>
           <div className="pt-2 flex flex-wrap md:justify-end gap-x-3 gap-y-1 text-white/40">
-            <a href="#" className="hover:text-white">Mentions Légales</a>
+            <a href="#" className="hover:text-white">{t.footer.legal}</a>
             <span>•</span>
-            <a href="#" className="hover:text-white">Confidentialité</a>
+            <a href="#" className="hover:text-white">{t.footer.privacy}</a>
             <span>•</span>
-            <a href="#" className="hover:text-white">Conditions de Séjour</a>
+            <a href="#" className="hover:text-white">{t.footer.terms}</a>
           </div>
         </div>
       </div>

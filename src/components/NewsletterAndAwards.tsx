@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import { Language } from '../types';
-import { hotelContent, awardsLogos } from '../data/hotelData';
+import { hotelContent, getAwardsLogos } from '../data/hotelData';
 
 interface NewsletterAndAwardsProps {
   lang: Language;
@@ -9,6 +9,7 @@ interface NewsletterAndAwardsProps {
 
 export const NewsletterAndAwards: React.FC<NewsletterAndAwardsProps> = ({ lang }) => {
   const t = hotelContent[lang];
+  const awards = getAwardsLogos(lang);
   const [email, setEmail] = useState('');
   const [accepted, setAccepted] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -31,7 +32,7 @@ export const NewsletterAndAwards: React.FC<NewsletterAndAwardsProps> = ({ lang }
         {submitted ? (
           <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-4 rounded max-w-md mx-auto text-sm flex items-center justify-center space-x-2">
             <Check size={18} className="text-emerald-600" />
-            <span>¡Gracias por suscribirte a las novedades de Riad Chaouen!</span>
+            <span>{t.newsletter.thankYou}</span>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
@@ -73,7 +74,7 @@ export const NewsletterAndAwards: React.FC<NewsletterAndAwardsProps> = ({ lang }
       {/* Awards & Accreditation Badges (Matches Lasala Plaza logo band) */}
       <div className="bg-[#ede8e1] border-t border-neutral-300/70 py-8 px-4">
         <div className="max-w-7xl mx-auto flex flex-wrap items-center justify-around gap-6 text-neutral-700">
-          {awardsLogos.map((item, idx) => (
+          {awards.map((item, idx) => (
             <div key={idx} className="flex flex-col items-center text-center px-4 py-2 opacity-85 hover:opacity-100 transition-opacity">
               <span className="font-serif font-bold text-sm sm:text-base tracking-widest text-[#3a322c]">
                 {item.label}

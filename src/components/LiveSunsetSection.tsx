@@ -34,7 +34,7 @@ export const LiveSunsetSection: React.FC<LiveSunsetSectionProps> = ({ lang }) =>
         </h2>
 
         <p className="font-serif italic text-lg text-white/80 mb-8">
-          Descubre el pulso tranquilo del Rif
+          {t.liveSunsetSection.subtitle}
         </p>
 
         <button
@@ -54,7 +54,7 @@ export const LiveSunsetSection: React.FC<LiveSunsetSectionProps> = ({ lang }) =>
               <div className="flex items-center space-x-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse" />
                 <span className="text-xs uppercase tracking-widest text-white/90 font-medium">
-                  Cámara en Directo • Terraza Riad Chaouen
+                  {t.liveSunsetSection.modalTitle}
                 </span>
               </div>
               <button 
@@ -72,13 +72,13 @@ export const LiveSunsetSection: React.FC<LiveSunsetSectionProps> = ({ lang }) =>
                 className="w-full h-full object-cover"
               />
               <div className="absolute top-4 left-4 bg-black/60 px-3 py-1 rounded text-[11px] font-mono text-white/90">
-                CHEFCHAOUEN • {new Date().toLocaleTimeString()} • 24°C Despejado
+                CHEFCHAOUEN • {new Date().toLocaleTimeString()} • {t.liveSunsetSection.weather}
               </div>
             </div>
 
             <div className="p-4 bg-[#141b19] text-xs text-white/70 flex justify-between items-center">
-              <span>Orientación: Este hacia las fuentes de Ras El-Maa y la Mezquita Española</span>
-              <span className="text-riad-gold font-medium">Señal en Tiempo Real</span>
+              <span>{t.liveSunsetSection.orientation}</span>
+              <span className="text-riad-gold font-medium">{t.liveSunsetSection.realtime}</span>
             </div>
           </div>
         </div>

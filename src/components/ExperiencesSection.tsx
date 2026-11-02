@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowRight, ChevronRight } from 'lucide-react';
 import { Language } from '../types';
-import { hotelContent, experiencesData } from '../data/hotelData';
+import { hotelContent, getExperiencesData } from '../data/hotelData';
 
 interface ExperiencesSectionProps {
   lang: Language;
@@ -15,7 +15,8 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
   const t = hotelContent[lang];
   const [activeExpIndex, setActiveExpIndex] = useState(0);
 
-  const activeExp = experiencesData[activeExpIndex];
+  const experiences = getExperiencesData(lang);
+  const activeExp = experiences[activeExpIndex] || experiences[0];
 
   return (
     <section id="experiences" className="py-24 md:py-36 bg-[#fdfcfb] overflow-hidden border-b border-neutral-200/60 relative">
@@ -24,7 +25,7 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
           {/* Left Column: Dynamic Photography Display with Smooth Transition */}
           <div className="lg:col-span-6 relative">
             <div className="relative h-[420px] sm:h-[560px] rounded-lg overflow-hidden shadow-2xl border border-neutral-200 bg-neutral-900">
-              {experiencesData.map((exp, idx) => (
+              {experiences.map((exp, idx) => (
                 <img
                   key={exp.id}
                   src={exp.image}
@@ -60,7 +61,7 @@ export const ExperiencesSection: React.FC<ExperiencesSectionProps> = ({
 
             {/* Interactive Experience Items List */}
             <div className="space-y-4 mb-10">
-              {experiencesData.map((exp, idx) => {
+              {experiences.map((exp, idx) => {
                 const isSelected = activeExpIndex === idx;
                 return (
                   <div

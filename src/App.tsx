@@ -70,6 +70,12 @@ export function App() {
     };
   }, []);
 
+  // Dynamically update document title and lang attribute on language switch
+  useEffect(() => {
+    document.title = t.meta.title;
+    document.documentElement.lang = lang;
+  }, [lang, t.meta.title]);
+
   const handleOpenBooking = (params?: { checkIn?: string; checkOut?: string; guests?: number; promo?: string }) => {
     if (params) {
       setBookingParams(prev => ({ ...prev, ...params }));
